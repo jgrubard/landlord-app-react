@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getApplicationsFromServer } from './store';
 
 import Home from './components/Home';
+import ApplicationForm from './components/ApplicationForm';
 
 import './App.css';
 
@@ -20,7 +21,8 @@ class App extends Component {
       <div>
         <Router>
           <div>
-            <Route component={Home} />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/applications/:token' component={({ match }) => <ApplicationForm token={match.params.token}/>} />
           </div>
         </Router>
       </div>

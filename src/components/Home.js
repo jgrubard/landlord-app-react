@@ -22,7 +22,11 @@ class Home extends Component {
               return (
                 <div key={id}>
                   <h4>Application ID#{id}</h4>
-                  <p>Link: http://192.168.1.175:3000/applications/{token}</p>
+                  <p>Link (send to applicant):
+                    <a href={`http://localhost:3001/applications/${token}`}>
+                    http://localhost:3001/applications/{token}
+                    </a>
+                  </p>
                   <button onClick={() => deleteApplication(id) }>delete Application {id}</button>
                 </div>
               );
