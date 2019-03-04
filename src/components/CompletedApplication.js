@@ -13,8 +13,7 @@ const CompletedApplication = ({ application }) => {
         path='/'
         label='Back to All Applications'
       />
-      <p>First Name: {first_name}</p>
-      <p>Last Name: {last_name}</p>
+      <p>Applicant Name: {first_name} {last_name}</p>
       <p>Email: {email}</p>
       <p>Phone Number: {phone}</p>
       <p>Previous Landlord's Name: {landlord_name}</p>

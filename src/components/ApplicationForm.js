@@ -45,6 +45,7 @@ class ApplicationForm extends Component {
     const { handleChange, onSubmit } = this;
     const applicantFoundByToken = tenant_applications.find(app => app.token === token);
     const tokenStatus = !!applicantFoundByToken;
+    const numberMessage = <span className='number-message'>*Do not use any non-numerical characters.</span>;
     return (
       <div>
         {
@@ -55,63 +56,65 @@ class ApplicationForm extends Component {
 
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your first name.</div>
                   <Input placeholder='First Name' name='first_name' value={first_name} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your first name.</div>
                 </div>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your last name.</div>
                   <Input placeholder='Last Name' name='last_name' value={last_name} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your last name.</div>
                 </div>
               </div>
 
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your email address.</div>
                   <Input placeholder='Email Address' name='email' value={email} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your email address.</div>
                 </div>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your phone number.</div>
                   <Input placeholder='Phone Number' name='phone' value={phone} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your phone number.<br/>{numberMessage}</div>
                 </div>
               </div>
 
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your landlords name.</div>
                   <Input placeholder='Landlord Name' name='landlord_name' value={landlord_name} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your landlords name.</div>
                 </div>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your landlords phone number.</div>
                   <Input placeholder='Landlord Phone Number' name='landlord_phone' value={landlord_phone} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your landlords phone number.</div>
                 </div>
               </div>
               
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
-                  <div className='form-label'>Please enter your landlords email address.</div>
                   <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange}/>
+                  <div className='form-label'>Please enter your landlords email address.</div>
                 </div>
                 <div className='form-flex-item'/>
-              </div>            
-              
-              <div className='eviction-form'>
-                <div className='form-label'>Please tell us if and why you have ever been evicted.</div>
-                <Input placeholder='Type your answer here...' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
               </div>
 
               {
                 applicantFoundByToken.application_type === 'Full' &&
                   <div className='form-flex-container'>
                     <div className='form-flex-item'>
-                      <div className='form-label'>Please enter your mother's maiden name.</div>
                       <Input placeholder="Mother's Maiden Name" name='maiden_name' value={maiden_name} onChange={handleChange}/>
+                      <div className='form-label'>Please enter your mother's maiden name.</div>
                     </div>
                     <div className='form-flex-item'>
-                      <div className='form-label'>Please enter your Social Security Number.</div>
                       <Input placeholder='Social Security Number' name='ssn' value={ssn} onChange={handleChange}/>
+                      <div className='form-label'>Please enter your Social Security Number.<br/>{numberMessage}</div>
                     </div>
                   </div>
-              }
+              }        
+              
+              <hr/>
+
+              <div className='eviction-form'>
+                <div className='form-label'>Please tell us if and why you have ever been evicted.</div>
+                <Input placeholder='Type your answer here...' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
+              </div>
 
               <Button
                 onClick={onSubmit}
