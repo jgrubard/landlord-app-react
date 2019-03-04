@@ -1,3 +1,16 @@
+.form-flex-container {
+  display: flex;
+}
+
+.form-flex-item {
+  flex: 1;
+  margin: 10px;
+}
+
 .form-label {
   font-size: 14px;
+}
+
+.eviction-form {
+  margin: 10px;
 }

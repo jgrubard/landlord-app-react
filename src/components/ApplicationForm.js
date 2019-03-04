@@ -52,31 +52,67 @@ class ApplicationForm extends Component {
             <div>
               <h2>Please complete the form below.</h2>
               <h3>You have received the <i>{applicantFoundByToken.application_type}</i> Application.</h3>
-              <div className='form-label'>Please enter your first name.</div>
-              <Input placeholder='First Name' name='first_name' value={first_name} onChange={handleChange}/>
-              <div className='form-label'>Please enter your last name.</div>
-              <Input placeholder='Last Name' name='last_name' value={last_name} onChange={handleChange}/>
-              <div className='form-label'>Please enter your email address.</div>
-              <Input placeholder='Email Address' name='email' value={email} onChange={handleChange}/>
-              <div className='form-label'>Please enter your phone number.</div>
-              <Input placeholder='Phone Number' name='phone' value={phone} onChange={handleChange}/>
-              <div className='form-label'>Please enter your previous or current landlords name.</div>
-              <Input placeholder='Landlord Name' name='landlord_name' value={landlord_name} onChange={handleChange}/>
-              <div className='form-label'>Please enter your previous or current landlords phone number.</div>
-              <Input placeholder='Landlord Phone Number' name='landlord_phone' value={landlord_phone} onChange={handleChange}/>
-              <div className='form-label'>Please enter your previous or current landlords email address.</div>
-              <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange}/>
-              <div className='form-label'>Please tell us if and why you have ever been evicted.</div>
-              <Input placeholder='Evictions' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
+
+              <div className='form-flex-container'>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your first name.</div>
+                  <Input placeholder='First Name' name='first_name' value={first_name} onChange={handleChange}/>
+                </div>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your last name.</div>
+                  <Input placeholder='Last Name' name='last_name' value={last_name} onChange={handleChange}/>
+                </div>
+              </div>
+
+              <div className='form-flex-container'>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your email address.</div>
+                  <Input placeholder='Email Address' name='email' value={email} onChange={handleChange}/>
+                </div>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your phone number.</div>
+                  <Input placeholder='Phone Number' name='phone' value={phone} onChange={handleChange}/>
+                </div>
+              </div>
+
+              <div className='form-flex-container'>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your landlords name.</div>
+                  <Input placeholder='Landlord Name' name='landlord_name' value={landlord_name} onChange={handleChange}/>
+                </div>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your landlords phone number.</div>
+                  <Input placeholder='Landlord Phone Number' name='landlord_phone' value={landlord_phone} onChange={handleChange}/>
+                </div>
+              </div>
+              
+              <div className='form-flex-container'>
+                <div className='form-flex-item'>
+                  <div className='form-label'>Please enter your landlords email address.</div>
+                  <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange}/>
+                </div>
+                <div className='form-flex-item'/>
+              </div>            
+              
+              <div className='eviction-form'>
+                <div className='form-label'>Please tell us if and why you have ever been evicted.</div>
+                <Input placeholder='Type your answer here...' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
+              </div>
+
               {
-                applicantFoundByToken.application_type === 'Full' && 
-                  <div>
-                    <div className='form-label'>Please enter your mother's maiden name.</div>
-                    <Input placeholder="Mother's Maiden Name" name='maiden_name' value={maiden_name} onChange={handleChange}/>
-                    <div className='form-label'>Please enter your Social Security Number.</div>
-                    <Input placeholder='Social Security Number' name='ssn' value={ssn} onChange={handleChange}/>
+                applicantFoundByToken.application_type === 'Full' &&
+                  <div className='form-flex-container'>
+                    <div className='form-flex-item'>
+                      <div className='form-label'>Please enter your mother's maiden name.</div>
+                      <Input placeholder="Mother's Maiden Name" name='maiden_name' value={maiden_name} onChange={handleChange}/>
+                    </div>
+                    <div className='form-flex-item'>
+                      <div className='form-label'>Please enter your Social Security Number.</div>
+                      <Input placeholder='Social Security Number' name='ssn' value={ssn} onChange={handleChange}/>
+                    </div>
                   </div>
               }
+
               <Button
                 onClick={onSubmit}
                 label='Submit Application'
@@ -104,93 +140,3 @@ const mapDispatch = (dispatch, { history }) => {
 }
 
 export default connect(mapState, mapDispatch)(ApplicationForm);
-
-
-
-/* 
-
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { updateApplicationOnServer } from '../store';
-
-// import axios from 'axios';
-// import url from '../store/production_url';
-
-class ApplicationForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      email: '',
-      // token: ''
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  // componentDidMount() {
-  //   this.findToken();
-  // }
-
-  // findToken() {
-  //   const { token } = this.props;
-  //   return axios.get(url + token)
-  //     .then(res => res.data)
-  //     .then(tenant_application => this.setState({ token: tenant_application.token }))
-  //     .catch(err => console.log('ERR0R!!', { err }));
-  // }
-
-  handleChange(ev) {
-    const { name, value } = ev.target;
-    this.setState({ [name]: value });
-  }
-
-  onSubmit(ev) {
-    ev.preventDefault();
-    const { token, updateApplication } = this.props;
-    const { email } = this.state;
-    updateApplication({ email, token })
-    this.setState({ email: '' });
-  }
-
-  render() {
-    const { email } = this.state;
-    const { application } = this.props;
-    const { handleChange, onSubmit } = this;
-    return (
-      <div>
-        <h2>This should be a form for applicants to fill out</h2>
-        {
-          application ? (
-            <div>
-              <h3>{application.token}: applicants temp token. this should disappear once the application is submitted</h3>
-              <input placeholder='email address' name='email' value={email} onChange={handleChange}/>
-              <button onClick={onSubmit}>Submit Application</button>
-            </div>
-          ) : (
-            <h1>Cannot find token</h1>
-          )
-
-        }
-
-      </div>
-    );
-  }
-}
-
-const mapState = ({ tenant_applications }, { token }) => {
-  // const { token } = this.props;
-  const application = tenant_applications.find(app => app.token === token);
-  return {
-    application
-  }
-}
-
-const mapDispatch = (dispatch, { history }) => {
-  return {
-    updateApplication: tenant_application => dispatch(updateApplicationOnServer(tenant_application, history))
-  }
-}
-
-export default connect(mapState, mapDispatch)(ApplicationForm);
-
-*/

@@ -8,7 +8,7 @@ const Input = ({ value, name, placeholder, onChange, type }) => {
       {
         type === 'textarea' ? (
           <textarea
-            className='text-input'
+            className='text-input textarea'
             name={name}
             value={value}
             placeholder={placeholder}
