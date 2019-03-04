@@ -7,6 +7,7 @@ import { getApplicationsFromServer } from './store';
 import Home from './components/Home';
 import ApplicationForm from './components/ApplicationForm';
 import ThankYou from './components/ThankYou';
+import CompletedApplication from './components/CompletedApplication';
 
 import './App.css';
 
@@ -21,11 +22,12 @@ class App extends Component {
     return (
       <div>
         <Router>
-          <div>
+          <div className='app-container'>
             <Route exact path='/' component={Home} />
             <Switch>
               <Route exact path='/applications/thank-you' component={() => <ThankYou />} />
               <Route exact path='/applications/:token' component={({ match, history }) => <ApplicationForm token={match.params.token} history={history}/>} />
+              <Route exact path='/applications/completed/:id' component={({ match }) => <CompletedApplication id={match.params.id * 1} />} />
             </Switch>
           </div>
         </Router>

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createApplicationOnServer, deleteApplicationFromServer } from '../store';
 
+import { Button } from './Library';
+import ApplicantCard from './ApplicantCard';
+
+import '../stylesheets/Home.css';
+
 class Home extends Component {
   constructor() {
     super();
@@ -12,32 +17,24 @@ class Home extends Component {
     const { tenant_applications, createApplication, deleteApplication } = this.props;
     return (
       <div>
-        <h1>Landlord App</h1>
-        <button onClick={createApplication}>new app</button>
+        <h1>Manage all prospective renters!</h1>
+        <Button
+          onClick={createApplication}
+          label='Create Blank Application'
+        />
         {
-          !this.props.tenant_applications.length ?
-            <p>There are currently ZERO applications</p> :
-            tenant_applications.map(app => {
-              const { id, token } = app;
+          tenant_applications.length !== 0 ? (
+            tenant_applications.map((app, index) => {
               return (
-                <div key={id}>
-                  <h4>Application ID#{id}</h4>
-                  {
-                    !!token ? (
-                      <p>Link (send to applicant):
-                        <a href={`http://localhost:3001/#/applications/${token}`}>
-                        http://localhost:3001/#/applications/{token}
-                        </a>
-                      </p>
-                    ) : (
-                      <p>No Link to send -- applicant has submitted application</p>
-                    )
-                  }
-
-                  <button onClick={() => deleteApplication(id) }>delete Application {id}</button>
-                </div>
+                <ApplicantCard
+                  key={app.id}
+                  application={app}
+                  deleteApplication={deleteApplication}
+                  index={index}
+                />
               );
             })
+          ) : <p>There are currently 0 applications</p>
         }
       </div>
     );
