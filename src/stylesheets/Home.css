@@ -2,4 +2,11 @@
   height: 30px;
   width: 200px;
   font-size: 14px;
+  outline: none;
+}
+
+.error {
+  color: red;
+  margin: 5px;
+  font-size: 10pt;
 }

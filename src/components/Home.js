@@ -11,9 +11,16 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      application_type: 'Basic'
+      application_type: '',
+      error: ''
     }
     this.changeType = this.changeType.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.validators = {
+      application_type: (value) => {
+      
+      }
+    }
   }
 
   changeType(ev) {
@@ -21,23 +28,35 @@ class Home extends Component {
     this.setState({ application_type: value });
   }
 
-  render() {
-    const { tenant_applications, createApplication, deleteApplication } = this.props;
+  onSubmit(ev) {
+    ev.preventDefault();
     const { application_type } = this.state;
-    const { changeType } = this;
+    const { createApplication } = this.props;
+    if(!application_type) {
+      this.setState({ error: 'Please select an Application Type' });
+      return;
+    }
+    createApplication(application_type);
+    this.setState({ error: '' });
+  }
+
+  render() {
+    const { tenant_applications, deleteApplication } = this.props;
+    const { error } = this.state;
+    const { changeType, onSubmit } = this;
     return (
       <div>
         <h1>Manage all prospective renters!</h1>
-        <label>Application Type</label>
         <select onChange={changeType} className='dropdown-menu'>
+          <option value=''>Select an Application Type</option>
           <option value='Basic'>Basic Application</option>
           <option value='Full'>Full Application</option>
         </select>
         <Button
-          onClick={() => createApplication(application_type)}
+          onClick={onSubmit}
           label='Create Blank Application'
         />
-
+        { error && <div className='error'>{error}</div>}
         {
           tenant_applications.length !== 0 ? (
             tenant_applications.map((app, index) => {
