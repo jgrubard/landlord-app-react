@@ -1,0 +1,19 @@
+.thank-you-main {
+  margin-top: 100px;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border: solid;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.thank-you-heading {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.thank-you-body {
+  margin-top: 10px;
+  font-size: 20px;
+}

@@ -1,4 +1,5 @@
+import Input from './Input';
 import Button from './Button';
 import LinkButton from './LinkButton';
 
-export { Button, LinkButton };
+export { Input, Button, LinkButton };

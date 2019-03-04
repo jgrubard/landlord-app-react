@@ -1,10 +1,12 @@
 import React from 'react';
 
+import '../stylesheets/ThankYou.css'
+
 const ThankYou = () => {
   return (
-    <div>
-      <h2>Thank you for submitting your application!</h2>
-      <h3>You will be contacted shortly once a decision has been made.</h3>
+    <div className='thank-you-main'>
+      <div className='thank-you-heading'>Thank you for submitting your application!</div>
+      <div className='thank-you-body'>You will be contacted once your application is evaluated.</div>
     </div>
   );
 }

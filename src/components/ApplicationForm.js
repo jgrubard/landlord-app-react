@@ -2,11 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateApplicationOnServer } from '../store';
 
+import { Input, Button } from './Library';
+import Error from './Error';
+
+import '../stylesheets/ApplicationForm.css';
+
 class ApplicationForm extends Component {
   constructor() {
     super();
     this.state = {
-      email: ''
+      email: '',
+      evictions: '',
+      first_name: '',
+      last_name: '',
+      landlord_email: '',
+      landlord_name: '',
+      landlord_phone: '',
+      maiden_name: '',
+      phone: '',
+      ssn: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -20,29 +34,57 @@ class ApplicationForm extends Component {
   onSubmit(ev) {
     ev.preventDefault();
     const { token, updateApplication } = this.props;
-    const { email } = this.state;
-    updateApplication({ email, token })
+    const { email, first_name, last_name, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = this.state;
+    updateApplication({ email, first_name, last_name, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn, token });
     this.setState({ email: '' });
   }
 
   render() {
-    const { email } = this.state;
+    const { email, first_name, last_name, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = this.state;
     const { token, tenant_applications } = this.props;
     const { handleChange, onSubmit } = this;
-    const applicantFoundByToken = !!tenant_applications.find(app => app.token === token);
+    const applicantFoundByToken = tenant_applications.find(app => app.token === token);
+    const tokenStatus = !!applicantFoundByToken;
     return (
       <div>
         {
-          applicantFoundByToken ? (
+          tokenStatus ? (
             <div>
-              <h2>This should be a form for applicants to fill out</h2>
-              <h3>{token}: applicants temp token. this should disappear once the application is submitted</h3>
-              <input placeholder='email address' name='email' value={email} onChange={handleChange}/>
-              <button onClick={onSubmit}>Submit Application</button>
+              <h2>Please complete the form below.</h2>
+              <h3>You have received the <i>{applicantFoundByToken.application_type}</i> Application.</h3>
+              <div className='form-label'>Please enter your first name.</div>
+              <Input placeholder='First Name' name='first_name' value={first_name} onChange={handleChange}/>
+              <div className='form-label'>Please enter your last name.</div>
+              <Input placeholder='Last Name' name='last_name' value={last_name} onChange={handleChange}/>
+              <div className='form-label'>Please enter your email address.</div>
+              <Input placeholder='Email Address' name='email' value={email} onChange={handleChange}/>
+              <div className='form-label'>Please enter your phone number.</div>
+              <Input placeholder='Phone Number' name='phone' value={phone} onChange={handleChange}/>
+              <div className='form-label'>Please enter your previous or current landlords name.</div>
+              <Input placeholder='Landlord Name' name='landlord_name' value={landlord_name} onChange={handleChange}/>
+              <div className='form-label'>Please enter your previous or current landlords phone number.</div>
+              <Input placeholder='Landlord Phone Number' name='landlord_phone' value={landlord_phone} onChange={handleChange}/>
+              <div className='form-label'>Please enter your previous or current landlords email address.</div>
+              <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange}/>
+              <div className='form-label'>Please tell us if and why you have ever been evicted.</div>
+              <Input placeholder='Evictions' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
+              {
+                applicantFoundByToken.application_type === 'Full' && 
+                  <div>
+                    <div className='form-label'>Please enter your mother's maiden name.</div>
+                    <Input placeholder="Mother's Maiden Name" name='maiden_name' value={maiden_name} onChange={handleChange}/>
+                    <div className='form-label'>Please enter your Social Security Number.</div>
+                    <Input placeholder='Social Security Number' name='ssn' value={ssn} onChange={handleChange}/>
+                  </div>
+              }
+              <Button
+                onClick={onSubmit}
+                label='Submit Application'
+              />
             </div>
           ) : (
             <div>
-              <h2>Sorry! Either the token has expired of the application has been removed. Please contact Soandso to get a new application link.</h2>
+              <Error />
             </div>
           )
         }
@@ -51,12 +93,8 @@ class ApplicationForm extends Component {
   }
 }
 
-// const mapState = null;
-
 const mapState = ({ tenant_applications }) => {
-  return {
-    tenant_applications
-  }
+  return { tenant_applications }
 }
 
 const mapDispatch = (dispatch, { history }) => {

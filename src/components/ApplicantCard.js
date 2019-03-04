@@ -28,6 +28,7 @@ const ApplicantCard = ({ application, deleteApplication, index }) => {
       <Button
         onClick={() => deleteApplication(id)}
         label={`Delete Application ${id}`}
+        color=' btn-delete'
       />
     </div>
   );

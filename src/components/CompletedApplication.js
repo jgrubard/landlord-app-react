@@ -5,6 +5,7 @@ import { LinkButton } from './Library';
 
 const CompletedApplication = ({ application }) => {
   if(!application) return null;
+  const { application_type, first_name, last_name, email, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = application;
   return (
     <div>
       <h1>Applicant Data</h1>
@@ -12,15 +13,21 @@ const CompletedApplication = ({ application }) => {
         path='/'
         label='Back to All Applications'
       />
-      <p>First Name: </p>
-      <p>Last Name: </p>
-      <p>Email: {application.email}</p>
-      <p>Phone Number: </p>
-      <p>Previous Landlord's Name: </p>
-      <p>Previous Landlord's Email: </p>
-      <p>Previous Landlord's Phone: </p>
-      <p>Evictions: </p>
-      
+      <p>First Name: {first_name}</p>
+      <p>Last Name: {last_name}</p>
+      <p>Email: {email}</p>
+      <p>Phone Number: {phone}</p>
+      <p>Previous Landlord's Name: {landlord_name}</p>
+      <p>Previous Landlord's Email: {landlord_email}</p>
+      <p>Previous Landlord's Phone: {landlord_phone}</p>
+      <p>Evictions: {evictions}</p>
+      {
+        application_type === 'full' &&
+          <div>
+            <p>Mother's Maiden Name: {maiden_name}</p>
+            <p>Social Security Number: {ssn}</p>
+          </div>
+      }
     </div>
   );
 }

@@ -1,0 +1,16 @@
+.error-message {
+  background-color: white;
+  padding: 20px;
+  margin: 100px;
+  text-align: center;
+  font-size: 15pt;
+}
+
+.large {
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.error-formatting {
+  margin: 20px;
+}

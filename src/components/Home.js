@@ -11,7 +11,7 @@ class Home extends Component {
   constructor() {
     super();
     this.state = {
-      application_type: 'basic'
+      application_type: 'Basic'
     }
     this.changeType = this.changeType.bind(this);
   }
@@ -25,18 +25,19 @@ class Home extends Component {
     const { tenant_applications, createApplication, deleteApplication } = this.props;
     const { application_type } = this.state;
     const { changeType } = this;
-    console.log(this.state);
     return (
       <div>
         <h1>Manage all prospective renters!</h1>
+        <label>Application Type</label>
+        <select onChange={changeType} className='dropdown-menu'>
+          <option value='Basic'>Basic Application</option>
+          <option value='Full'>Full Application</option>
+        </select>
         <Button
           onClick={() => createApplication(application_type)}
           label='Create Blank Application'
         />
-        <select onChange={changeType}>
-          <option value='basic'>Basic</option>
-          <option value='full'>Full</option>
-        </select>
+
         {
           tenant_applications.length !== 0 ? (
             tenant_applications.map((app, index) => {

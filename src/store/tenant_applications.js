@@ -17,7 +17,6 @@ export const getApplicationsFromServer = () => {
 }
 
 export const createApplicationOnServer = (application_type) => {
-  console.log(application_type)
   return dispatch => {
     const token = Math.random().toString(32).slice(2);
     return axios.post(url, { token, application_type })
@@ -28,7 +27,6 @@ export const createApplicationOnServer = (application_type) => {
 }
 
 export const updateApplicationOnServer = (tenant_application, history) => {
-  console.log(tenant_application)
   return dispatch => {
     const { token } = tenant_application;
     return axios.put(url + token, tenant_application)
