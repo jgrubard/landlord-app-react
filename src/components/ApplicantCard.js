@@ -4,12 +4,12 @@ import { Button, LinkButton } from './Library';
 import '../stylesheets/ApplicantCard.css';
 
 const ApplicantCard = ({ application, deleteApplication, index }) => {
-  const { id, token } = application;
+  const { id, token, application_type } = application;
   const color = index % 2 === 0 ? 'grey' : 'white'
   const appUrl = `http://localhost:3001/#/applications/${token}`;
   return (
     <div className={`app-card bg-${color}`}>
-      <div className='card-title'>Application #{id}</div>
+      <div className='card-title'>Application #{id}: {application_type}</div>
       {
         !!token ? (
           <p>Link (send to applicant):

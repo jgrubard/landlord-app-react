@@ -16,10 +16,11 @@ export const getApplicationsFromServer = () => {
   }
 }
 
-export const createApplicationOnServer = () => {
+export const createApplicationOnServer = (application_type) => {
+  console.log(application_type)
   return dispatch => {
     const token = Math.random().toString(32).slice(2);
-    return axios.post(url, { token })
+    return axios.post(url, { token, application_type })
       .then(res => res.data)
       .then(tenant_application => dispatch(createApplication(tenant_application)))
       .catch(err => console.log('ERR0R!!', { err }));

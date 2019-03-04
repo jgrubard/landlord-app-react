@@ -10,18 +10,33 @@ import '../stylesheets/Home.css';
 class Home extends Component {
   constructor() {
     super();
-    this.state = {}
+    this.state = {
+      application_type: 'basic'
+    }
+    this.changeType = this.changeType.bind(this);
+  }
+
+  changeType(ev) {
+    const { value } = ev.target;
+    this.setState({ application_type: value });
   }
 
   render() {
     const { tenant_applications, createApplication, deleteApplication } = this.props;
+    const { application_type } = this.state;
+    const { changeType } = this;
+    console.log(this.state);
     return (
       <div>
         <h1>Manage all prospective renters!</h1>
         <Button
-          onClick={createApplication}
+          onClick={() => createApplication(application_type)}
           label='Create Blank Application'
         />
+        <select onChange={changeType}>
+          <option value='basic'>Basic</option>
+          <option value='full'>Full</option>
+        </select>
         {
           tenant_applications.length !== 0 ? (
             tenant_applications.map((app, index) => {
@@ -45,7 +60,7 @@ const mapState = ({ tenant_applications }) => ({ tenant_applications });
 
 const mapDispatch = dispatch => {
   return {
-    createApplication: () => dispatch(createApplicationOnServer()),
+    createApplication: type => dispatch(createApplicationOnServer(type)),
     deleteApplication: id => dispatch((deleteApplicationFromServer(id)))
   }
 };
