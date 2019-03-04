@@ -26,17 +26,14 @@ export const createApplicationOnServer = () => {
   }
 }
 
-export const updateApplicationOnServer = tenant_application => {
+export const updateApplicationOnServer = (tenant_application, history) => {
+  console.log(tenant_application)
   return dispatch => {
     const { token } = tenant_application;
-    // const app = Object.assign({}, tenant_application, { token: null })
-    console.log('UPDATE THUNK - pre axios', tenant_application);
     return axios.put(url + token, tenant_application)
-      .then(res => {
-        console.log("res.data:", res.data)
-        return res.data
-      })
+      .then(res => res.data)
       .then(tenant_application => dispatch(updateApplication(tenant_application)))
+      .then(() => history.push('/applications/thank-you'))
       .catch(err => console.log('ERR0R!!', { err }));
   }
 }
@@ -57,8 +54,8 @@ const store = (state = [], action) => {
     case CREATE_APPLICATION:
       return [ ...state, action.tenant_application ];
     case UPDATE_APPLICATION:
-      applications = state.map(app => app.id !== action.tenant_application.id ? action.tenant_application : app);
-      return applications;
+      applications = state.filter(app => app.id !== action.tenant_application.id);
+      return [ ...applications, action.tenant_application ];
     case DELETE_APPLICATION:
       applications = state.filter(app => app.id !== action.id);
       return applications;
