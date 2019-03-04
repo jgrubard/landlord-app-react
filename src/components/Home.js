@@ -16,11 +16,6 @@ class Home extends Component {
     }
     this.changeType = this.changeType.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.validators = {
-      application_type: (value) => {
-      
-      }
-    }
   }
 
   changeType(ev) {
@@ -46,17 +41,22 @@ class Home extends Component {
     const { changeType, onSubmit } = this;
     return (
       <div>
-        <h1>Manage all prospective renters!</h1>
-        <select onChange={changeType} className='dropdown-menu'>
-          <option value=''>Select an Application Type</option>
-          <option value='Basic'>Basic Application</option>
-          <option value='Full'>Full Application</option>
-        </select>
-        <Button
-          onClick={onSubmit}
-          label='Create Blank Application'
-        />
-        { error && <div className='error'>{error}</div>}
+        <div className='home-title'>Renter Application Manager</div>
+        <div className='new-application'>
+          <div>
+            <select onChange={changeType} className='dropdown-menu'>
+              <option value=''>Select an Application Type</option>
+              <option value='Basic'>Basic Application</option>
+              <option value='Full'>Full Application</option>
+            </select>
+            { error && <div className='error'>{error}</div>}
+          </div>
+          <Button
+            onClick={onSubmit}
+            label='Create Blank Application'
+          />
+        </div>
+        <div className='all-applications'>
         {
           tenant_applications.length !== 0 ? (
             tenant_applications.map((app, index) => {
@@ -71,6 +71,7 @@ class Home extends Component {
             })
           ) : <p>There are currently 0 applications</p>
         }
+        </div>
       </div>
     );
   }

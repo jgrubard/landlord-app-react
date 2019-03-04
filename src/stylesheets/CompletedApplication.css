@@ -1,0 +1,11 @@
+.completed-app-title {
+  font-size: 25pt;
+  margin-bottom: 10px;
+}
+
+.data-container {
+  background-color: white;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 10px;
+}

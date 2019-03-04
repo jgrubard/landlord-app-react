@@ -1,4 +1,19 @@
+.home-title {
+  font-size: 25pt;
+  font-weight: bold;
+  text-align: center;
+}
+
+.new-application {
+  text-align: center;
+}
+
+.all-applications {
+  margin-top: 15px;
+}
+
 .dropdown-menu {
+  margin-top: 20px;
   height: 30px;
   width: 200px;
   font-size: 14px;

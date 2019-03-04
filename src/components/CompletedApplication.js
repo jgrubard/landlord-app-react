@@ -3,30 +3,39 @@ import { connect } from 'react-redux';
 
 import { LinkButton } from './Library';
 
+import '../stylesheets/CompletedApplication.css';
+
+const formatPhone = p => {
+  return `(${p.slice(0,3)}) ${p.slice(3,6)}-${p.slice(6)}`;
+}
+
 const CompletedApplication = ({ application }) => {
   if(!application) return null;
-  const { application_type, first_name, last_name, email, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = application;
+  const { id, application_type, first_name, last_name, email, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = application;
+  const formattedPhone = formatPhone(phone);
   return (
     <div>
-      <h1>Applicant Data</h1>
+      <div className='completed-app-title'>{first_name} {last_name}'s Application - #{id}</div>
       <LinkButton
         path='/'
         label='Back to All Applications'
       />
-      <p>Applicant Name: {first_name} {last_name}</p>
-      <p>Email: {email}</p>
-      <p>Phone Number: {phone}</p>
-      <p>Previous Landlord's Name: {landlord_name}</p>
-      <p>Previous Landlord's Email: {landlord_email}</p>
-      <p>Previous Landlord's Phone: {landlord_phone}</p>
-      <p>Evictions: {evictions}</p>
-      {
-        application_type === 'full' &&
-          <div>
-            <p>Mother's Maiden Name: {maiden_name}</p>
-            <p>Social Security Number: {ssn}</p>
-          </div>
-      }
+      <div className='data-container'>
+        <p><i>Applicant Name:</i> <b>{first_name} {last_name}</b></p>
+        <p><i>Email:</i> <b>{email}</b></p>
+        <p><i>Phone Number:</i> <b>{formattedPhone}</b></p>
+        <p><i>Previous Landlord's Name:</i> <b>{landlord_name}</b></p>
+        <p><i>Previous Landlord's Email:</i> <b>{landlord_email}</b></p>
+        <p><i>Previous Landlord's Phone:</i> <b>{landlord_phone}</b></p>
+        <p><i>Evictions:</i> <b>{evictions}</b></p>
+        {
+          application_type === 'full' &&
+            <div>
+              <p><i>Mother's Maiden Name:</i> <b>{maiden_name}</b></p>
+              <p><i>Social Security Number:</i> <b>{ssn}</b></p>
+            </div>
+        }
+      </div>
     </div>
   );
 }
