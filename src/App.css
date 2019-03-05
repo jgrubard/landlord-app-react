@@ -2,6 +2,24 @@
   margin: 75px 300px;
 }
 
+@media (max-width: 1200px) {
+  .app-container {
+    margin: 75px 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-container {
+    margin: 75px 125px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    margin: 75px 75px;
+  }
+}
+
 @media (max-width: 500px) {
   .app-container {
     margin: 10px;

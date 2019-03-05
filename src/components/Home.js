@@ -52,10 +52,11 @@ class Home extends Component {
 
   render() {
     const { tenant_applications, deleteApplication } = this.props;
-    const { error, page } = this.state;
+    const { error, page, start, end } = this.state;
     const { changeType, onSubmit, prevPage, nextPage } = this;
     const lastPage = Math.ceil(tenant_applications.length / 5);
-    const paginatedApps = tenant_applications.slice(this.state.start, this.state.end);
+    const paginatedApps = tenant_applications.slice(start, end);
+    const [ plural1, plural2 ] = tenant_applications.length === 1 ? ['is', ''] : ['are', 's'];
     return (
       <div>
         <div className='home-title'>Renter Application Manager</div>
@@ -73,6 +74,7 @@ class Home extends Component {
             label='Create Blank Application'
           />
         </div>
+        <div className='app-count'>There {plural1} currently {tenant_applications.length} application{plural2}</div>
         <div className='all-applications'>
         {
           lastPage > 1 &&
@@ -84,7 +86,7 @@ class Home extends Component {
             />
         }
         {
-          tenant_applications.length !== 0 ? (
+          tenant_applications.length !== 0 &&
             paginatedApps.map((app, index) => {
               return (
                 <ApplicantCard
@@ -95,7 +97,6 @@ class Home extends Component {
                 />
               );
             })
-          ) : <p>There are currently 0 applications</p>
         }
         </div>
         {

@@ -20,20 +20,54 @@ const CompletedApplication = ({ application }) => {
         label='Back to All Applications'
       />
       <div className='data-container'>
-        <p><i>Applicant Name:</i> <b>{first_name} {last_name}</b></p>
-        <p><i>Email:</i> <b>{email}</b></p>
-        <p><i>Phone Number:</i> <b>{formatPhone(phone)}</b></p>
-        <p><i>Previous Landlord's Name:</i> <b>{landlord_name}</b></p>
-        <p><i>Previous Landlord's Email:</i> <b>{landlord_email}</b></p>
-        <p><i>Previous Landlord's Phone:</i> <b>{formatPhone(landlord_phone)}</b></p>
+
+        <div className='data-flex-container bg-gray'>
+          <div className='data-flex-item item-key'>Applicant Name:</div>
+          <div className='data-flex-item item-value'>{first_name} {last_name}</div>
+        </div>
+
+        <div className='data-flex-container'>
+          <div className='data-flex-item item-key'>Email:</div>
+          <div className='data-flex-item item-value'>{email}</div>
+        </div>
+
+        <div className='data-flex-container bg-gray'>
+          <div className='data-flex-item item-key'>Phone Number:</div>
+          <div className='data-flex-item item-value'>{formatPhone(phone)}</div>
+        </div>
+
+        <div className='data-flex-container'>
+          <div className='data-flex-item item-key'>Previous Landlord's Name:</div>
+          <div className='data-flex-item item-value'>{landlord_name}</div>
+        </div>
+
+        <div className='data-flex-container bg-gray'>
+          <div className='data-flex-item item-key'>Previous Landlord's Email:</div>
+          <div className='data-flex-item item-value'>{landlord_email}</div>
+        </div>
+
+        <div className='data-flex-container'>
+          <div className='data-flex-item item-key'>Previous Landlord's Phone:</div>
+          <div className='data-flex-item item-value'>{formatPhone(landlord_phone)}</div>
+        </div>
+
         {
           application_type === 'Full' &&
             <div>
-              <p><i>Mother's Maiden Name:</i> <b>{maiden_name}</b></p>
-              <p><i>Social Security Number:</i> <b>{ssn}</b></p>
+              <div className='data-flex-container bg-gray'>
+                <div className='data-flex-item item-key'>Mother's Maiden Name:</div>
+                <div className='data-flex-item item-value'>{maiden_name}</div>
+              </div>
+              <div className='data-flex-container'>
+                <div className='data-flex-item item-key'>Social Security Number:</div>
+                <div className='data-flex-item item-value'>{ssn}</div>
+              </div>
             </div>
         }
-        <p><i>Evictions:</i> <b>{evictions}</b></p>
+        <div className='bg-gray'>
+          <div className='data-flex-item item-key data-evictions'>Evictions:</div>
+          <div className='data-flex-item item-value data-evictions'>{evictions}</div>
+        </div>
       </div>
     </div>
   );

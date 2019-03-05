@@ -9,3 +9,29 @@
   padding: 10px;
   border-radius: 10px;
 }
+
+.data-flex-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.bg-gray {
+  background-color: rgb(231, 231, 231);
+}
+
+.data-flex-item {
+  font-size: 12pt;
+}
+
+.item-key {
+  font-style: italic;
+}
+
+.item-value {
+  font-weight: bold;
+}
+
+.data-evictions {
+  padding: 5px;
+}

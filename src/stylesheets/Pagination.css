@@ -6,8 +6,14 @@
   padding: 5px;
 }
 
+.app-count {
+  margin: 15px;
+  text-align: center;
+  font-size: 18pt;
+}
+
 .page-text {
-  
+  font-weight: bold;
 }
 
 .pagination-button {
