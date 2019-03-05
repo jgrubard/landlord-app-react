@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createApplicationOnServer, deleteApplicationFromServer } from '../store';
 
-import { Button } from './Library';
+import { Button, Pagination } from './Library';
 import ApplicantCard from './ApplicantCard';
 
 import '../stylesheets/Home.css';
@@ -41,17 +41,19 @@ class Home extends Component {
   }
 
   nextPage() {
-    this.setState({ start: this.state.start + 5, end: this.state.end + 5, page: this.state.page + 1})
+    const { start, end, page } = this.state;
+    this.setState({ start: start + 5, end: end + 5, page: page + 1})
   }
 
   prevPage() {
-    this.setState({ start: this.state.start - 5, end: this.state.end - 5, page: this.state.page - 1})
+    const { start, end, page } = this.state;
+    this.setState({ start: start - 5, end: end - 5, page: page - 1})
   }
 
   render() {
     const { tenant_applications, deleteApplication } = this.props;
-    const { error } = this.state;
-    const { changeType, onSubmit } = this;
+    const { error, page } = this.state;
+    const { changeType, onSubmit, prevPage, nextPage } = this;
     const lastPage = Math.ceil(tenant_applications.length / 5);
     const paginatedApps = tenant_applications.slice(this.state.start, this.state.end);
     return (
@@ -72,9 +74,15 @@ class Home extends Component {
           />
         </div>
         <div className='all-applications'>
-        <button disabled={this.state.page <= 1} onClick={this.prevPage}>{'<<'}</button>
-        <span>Page {this.state.page}/{lastPage}</span>
-        <button disabled={this.state.page >= lastPage} onClick={this.nextPage}>{'>>'}</button>
+        {
+          lastPage > 1 &&
+            <Pagination
+              page={page}
+              prevPage={prevPage}
+              nextPage={nextPage}
+              lastPage={lastPage}
+            />
+        }
         {
           tenant_applications.length !== 0 ? (
             paginatedApps.map((app, index) => {
@@ -90,6 +98,15 @@ class Home extends Component {
           ) : <p>There are currently 0 applications</p>
         }
         </div>
+        {
+          lastPage > 1 &&
+            <Pagination
+              page={page}
+              prevPage={prevPage}
+              nextPage={nextPage}
+              lastPage={lastPage}
+            />
+        }
       </div>
     );
   }
