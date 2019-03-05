@@ -27,7 +27,11 @@ class ApplicationForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.validators = {
       email: (value) => {
-        if(!value || !value.includes('@')) return '*Please enter a valid email'
+        if(!value) return '*Please enter a valid email';
+        const [ name, site ] = value.split('@');
+        if(!name || !site) return '*Please enter a valid email';
+        const [ company, ext ] = site.split('.');
+        if(!company || !ext) return '*Please enter a valid email';
       },
       evictions: (value) => {
         if(!value) return '*Please do not leave this field blank.';
@@ -39,19 +43,23 @@ class ApplicationForm extends Component {
         if(!value) return '*Please do not leave this field blank.';
       },
       landlord_email: (value) => {
-        if(!value || !value.includes('@')) return '*Please enter a valid email';
+        if(!value) return '*Please enter a valid email';
+        const [ name, site ] = value.split('@');
+        if(!name || !site) return '*Please enter a valid email';
+        const [ company, ext ] = site.split('.');
+        if(!company || !ext) return '*Please enter a valid email';
       },
       landlord_name: (value) => {
         if(!value) return '*Please do not leave this field blank.';
       },
       landlord_phone: (value) => {
         if(!value) return "*Please enter your landlord's phone number"
-        if(isNaN(parseInt(value))) return '*Please only enter numerical characters.';
+        if(isNaN(Number(value))) return '*Please only enter numerical characters.';
         if(value.length !== 10) return '*Please enter a valid 10 digit number.';
       },
       phone: (value) => {
         if(!value) return '*Please enter your phone number'
-        if(isNaN(parseInt(value))) return '*Please only enter numerical characters.';
+        if(isNaN(Number(value))) return '*Please only enter numerical characters.';
         if(value.length !== 10) return '*Please enter a valid 10 digit number.';
       },
       maiden_name: (value) => {
@@ -59,7 +67,7 @@ class ApplicationForm extends Component {
       },
       ssn: (value) => {
         if(!value) return '*Please enter your social security number'
-        if(isNaN(parseInt(value))) return '*Please only enter numerical characters.';
+        if(isNaN(Number(value))) return '*Please only enter numerical characters.';
         if(value.length !== 9) return '*Please enter a valid 9 digit number.';
       }
     }
@@ -127,7 +135,7 @@ class ApplicationForm extends Component {
 
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
-                  <Input placeholder='Email Address' name='email' value={email} onChange={handleChange}/>
+                  <Input placeholder='Email Address' name='email' value={email} onChange={handleChange} type='email'/>
                   { errors.email && <span className='form-error'>{errors.email}</span>}
                   <div className='form-label'>Please enter your email address.</div>
                 </div>
@@ -153,7 +161,7 @@ class ApplicationForm extends Component {
               
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
-                  <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange}/>
+                  <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange} type='email'/>
                   { errors.landlord_email && <span className='form-error'>{errors.landlord_email}</span>}
                   <div className='form-label'>Please enter your landlords email address.</div>
                 </div>
