@@ -72,10 +72,7 @@ class ApplicationForm extends Component {
 
   generateErrors(type) {
     const allKeys = Object.keys(this.validators);
-    const filteredKeys = Object.keys(this.validators)
-      .filter(v => {
-        return v !== 'ssn' && v !== 'maiden_name';
-      });
+    const filteredKeys = Object.keys(this.validators).filter(v => v !== 'ssn' && v !== 'maiden_name');
     const validatorsArr = type === 'Basic' ? filteredKeys : allKeys;
     return validatorsArr
       .reduce((result, key) => {
@@ -105,7 +102,6 @@ class ApplicationForm extends Component {
     const applicantFoundByToken = tenant_applications.find(app => app.token === token);
     const tokenStatus = !!applicantFoundByToken;
     const numberMessage = <span className='number-message'>*Do not use any non-numerical characters.</span>;
-    console.log(this.state.errors);
     return (
       <div>
         {

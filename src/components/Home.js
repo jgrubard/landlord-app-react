@@ -12,10 +12,15 @@ class Home extends Component {
     super();
     this.state = {
       application_type: '',
-      error: ''
+      error: '',
+      start: 0,
+      end: 5,
+      page: 1
     }
     this.changeType = this.changeType.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.nextPage = this.nextPage.bind(this);
+    this.prevPage = this.prevPage.bind(this);
   }
 
   changeType(ev) {
@@ -35,10 +40,20 @@ class Home extends Component {
     this.setState({ error: '' });
   }
 
+  nextPage() {
+    this.setState({ start: this.state.start + 5, end: this.state.end + 5, page: this.state.page + 1})
+  }
+
+  prevPage() {
+    this.setState({ start: this.state.start - 5, end: this.state.end - 5, page: this.state.page - 1})
+  }
+
   render() {
     const { tenant_applications, deleteApplication } = this.props;
     const { error } = this.state;
     const { changeType, onSubmit } = this;
+    const lastPage = Math.ceil(tenant_applications.length / 5);
+    const paginatedApps = tenant_applications.slice(this.state.start, this.state.end);
     return (
       <div>
         <div className='home-title'>Renter Application Manager</div>
@@ -57,9 +72,12 @@ class Home extends Component {
           />
         </div>
         <div className='all-applications'>
+        <button disabled={this.state.page <= 1} onClick={this.prevPage}>{'<<'}</button>
+        <span>Page {this.state.page}/{lastPage}</span>
+        <button disabled={this.state.page >= lastPage} onClick={this.nextPage}>{'>>'}</button>
         {
           tenant_applications.length !== 0 ? (
-            tenant_applications.map((app, index) => {
+            paginatedApps.map((app, index) => {
               return (
                 <ApplicantCard
                   key={app.id}
