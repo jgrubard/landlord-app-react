@@ -6,7 +6,9 @@ import '../stylesheets/ApplicantCard.css';
 const ApplicantCard = ({ application, deleteApplication, index }) => {
   const { id, token, application_type } = application;
   const color = index % 2 === 0 ? 'white' : 'blue'
-  const appUrl = `http://localhost:3001/#/applications/${token}`;
+  // const appUrl = `http://localhost:3001/#/applications/${token}`;
+  // https://landlord-app-ruby-api.herokuapp.com/v1/tenant_applications
+  const appUrl = `https://landlord-app-jg.herokuapp.com/#/applications/${token}`;
   return (
     <div className={`app-card bg-${color}`}>
       <div className='card-title'>Application #{id}: {application_type} Application</div>
