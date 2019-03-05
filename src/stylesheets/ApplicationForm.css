@@ -18,3 +18,8 @@
 .number-message {
   font-size: 9pt;
 }
+
+.form-error {
+  color: red;
+  font-size: 9pt;
+}

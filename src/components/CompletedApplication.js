@@ -15,7 +15,7 @@ const CompletedApplication = ({ application }) => {
   const formattedPhone = formatPhone(phone);
   return (
     <div>
-      <div className='completed-app-title'>{first_name} {last_name}'s Application - #{id}</div>
+      <div className='completed-app-title'>{first_name} {last_name}'s Application - #{id} ({application_type})</div>
       <LinkButton
         path='/'
         label='Back to All Applications'
@@ -27,14 +27,14 @@ const CompletedApplication = ({ application }) => {
         <p><i>Previous Landlord's Name:</i> <b>{landlord_name}</b></p>
         <p><i>Previous Landlord's Email:</i> <b>{landlord_email}</b></p>
         <p><i>Previous Landlord's Phone:</i> <b>{landlord_phone}</b></p>
-        <p><i>Evictions:</i> <b>{evictions}</b></p>
         {
-          application_type === 'full' &&
+          application_type === 'Full' &&
             <div>
               <p><i>Mother's Maiden Name:</i> <b>{maiden_name}</b></p>
               <p><i>Social Security Number:</i> <b>{ssn}</b></p>
             </div>
         }
+        <p><i>Evictions:</i> <b>{evictions}</b></p>
       </div>
     </div>
   );

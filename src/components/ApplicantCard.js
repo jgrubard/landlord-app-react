@@ -9,14 +9,14 @@ const ApplicantCard = ({ application, deleteApplication, index }) => {
   const appUrl = `http://localhost:3001/#/applications/${token}`;
   return (
     <div className={`app-card bg-${color}`}>
-      <div className='card-title'>Application #{id}: {application_type}</div>
+      <div className='card-title'>Application #{id}: {application_type} Application</div>
       {
         !!token ? (
           <p>Application Link:
             &nbsp;
             <a href={appUrl}><b>{appUrl}</b></a>
           </p>
-        ) : <p>No Link to send -- applicant has submitted application</p>
+        ) : <p>No Link: Application Submitted</p>
       }
       {
         !token && <LinkButton
