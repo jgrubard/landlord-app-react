@@ -1,3 +1,9 @@
 .app-container {
   margin: 75px 300px;
 }
+
+@media (max-width: 500px) {
+  .app-container {
+    margin: 10px;
+  }
+}

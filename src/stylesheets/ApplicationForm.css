@@ -23,3 +23,9 @@
   color: red;
   font-size: 9pt;
 }
+
+@media (max-width: 500px) {
+  .form-flex-container {
+    display: block;
+  }
+}
