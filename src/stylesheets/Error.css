@@ -1,7 +1,6 @@
 .error-message {
   background-color: white;
   padding: 20px;
-  margin: 100px;
   text-align: center;
   font-size: 15pt;
 }
@@ -12,5 +11,5 @@
 }
 
 .error-formatting {
-  margin: 20px;
+  margin: 20px 0px;
 }

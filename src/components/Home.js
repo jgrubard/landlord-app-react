@@ -55,7 +55,9 @@ class Home extends Component {
     const { error, page, start, end } = this.state;
     const { changeType, onSubmit, prevPage, nextPage } = this;
     const lastPage = Math.ceil(tenant_applications.length / 5);
-    const paginatedApps = tenant_applications.slice(start, end);
+    const paginatedApps = tenant_applications
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+      .slice(start, end);
     const [ plural1, plural2 ] = tenant_applications.length === 1 ? ['is', ''] : ['are', 's'];
     return (
       <div>

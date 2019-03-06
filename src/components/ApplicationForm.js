@@ -100,7 +100,7 @@ class ApplicationForm extends Component {
     this.setState({ errors })
     if(Object.keys(errors).length) return;
     updateApplication({ email, first_name, last_name, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn, token });
-    this.setState({ email: '' });
+    // this.setState({ email: '' });
   }
 
   render() {
