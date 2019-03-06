@@ -75,7 +75,13 @@ class Home extends Component {
             label='Create Blank Application'
           />
         </div>
-        <div className='app-count'>There {plural1} currently {tenant_applications.length} application{plural2}</div>
+        <div className='app-count-banner'>
+          There {plural1} currently
+            <span className='app-count'>
+              {tenant_applications.length}
+            </span>
+          application{plural2}
+        </div>
         <div className='all-applications'>
         {
           lastPage > 1 &&

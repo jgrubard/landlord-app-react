@@ -19,18 +19,24 @@ const ApplicantCard = ({ application, deleteApplication, index }) => {
           </p>
         ) : <p>No Link: Application Submitted</p>
       }
-      {
-        !token && <LinkButton
-            path={`/applications/completed/${id}`}
-            label='Click to see applicant Data'
+      <div className='button-flex-group'>
+        <div className='button-flex-item'>
+          <Button
+            onClick={() => deleteApplication(id)}
+            label='Delete'
+            color=' btn-delete'
           />
-      }
-
-      <Button
-        onClick={() => deleteApplication(id)}
-        label={`Delete Application ${id}`}
-        color=' btn-delete'
-      />
+        </div>
+        {
+          !token &&
+            <div className='button-flex-item'>
+              <LinkButton
+                path={`/applications/completed/${id}`}
+                label='Click to see applicant Data'
+              />
+            </div>
+        }
+      </div>
     </div>
   );
 }

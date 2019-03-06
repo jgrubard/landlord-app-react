@@ -9,19 +9,19 @@ const Pagination = ({ page, prevPage, nextPage, lastPage }) => {
         disabled={page <= 1}
         onClick={prevPage}
       >
-        Previous
+        PREV
       </button>
       <span
         className='page-text'
       >
-        Page {page}/{lastPage}
+        PAGE {page}/{lastPage}
       </span>
       <button
         className='pagination-button' 
         disabled={page >= lastPage}
         onClick={nextPage
       }>
-        Next
+        NEXT
       </button>
     </div>
   );

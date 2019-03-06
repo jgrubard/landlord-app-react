@@ -1,5 +1,6 @@
 .app-card {
   padding: 15px;
+  color: rgb(0, 17, 95);
 }
 
 .bg-blue {
@@ -13,4 +14,13 @@
 .card-title {
   font-size: 20px;
   font-weight: bold;
+}
+
+.button-flex-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-flex-item {
+  margin: 0px;
 }

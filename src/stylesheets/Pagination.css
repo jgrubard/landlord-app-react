@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* background-color: green; */
-  padding: 5px;
+  background-color: rgba(0, 17, 95, 0.719);
+  color: white;
+  padding: 10px;
 }
 
 .app-count {
@@ -13,7 +14,7 @@
 }
 
 .page-text {
-  font-weight: bold;
+  font-size: 16pt;
 }
 
 .pagination-button {
@@ -25,16 +26,18 @@
   font-weight: bold;
   font-size: 12pt;
   border: solid;
-  border-width: 1px;
+  border-width: 1.5px;
+  color: rgb(255, 255, 255);
 }
 
 .pagination-button:hover {
   background-color: rgb(255, 255, 255);
+  color: rgb(0, 17, 95);
 }
 
 .pagination-button:disabled {
   cursor: not-allowed;
   background-color: rgba(255, 255, 255, 0);
-  color: grey;
+  color: rgb(139, 139, 139);
 }
 
