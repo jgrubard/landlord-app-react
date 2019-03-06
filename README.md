@@ -1,5 +1,4 @@
-##Landlord Application Management
-##React App
+Landlord Application Management - React App
 ----
 
 [Deployed React App](https://landlord-app-jg.herokuapp.com)
