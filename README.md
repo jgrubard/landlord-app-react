@@ -1,8 +1,9 @@
 Landlord Application Management App
 ----
 
-####[Deployed Page](https://landlord-app-jg.herokuapp.com)
-####[Ruby on Rails API](https://landlord-app-ruby-api.herokuapp.com/v1/tenant_applications)
+[Deployed Page](https://landlord-app-jg.herokuapp.com)
+
+[Ruby on Rails API](https://landlord-app-ruby-api.herokuapp.com/v1/tenant_applications)
 
 To copy the application to your local machine, please run the 
  following command:
