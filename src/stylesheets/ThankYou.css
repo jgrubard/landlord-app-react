@@ -1,11 +1,12 @@
 .thank-you-main {
-  margin-top: 100px;
+  margin-top: 75px;
   text-align: center;
   background-color: white;
   padding: 20px;
   border: solid;
-  border-width: 1px;
-  border-color: gray;
+  border-width: 5px;
+  border-color: rgb(0, 17, 95);
+  color: rgb(0, 17, 95);
 }
 
 .thank-you-heading {

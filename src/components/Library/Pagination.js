@@ -11,16 +11,12 @@ const Pagination = ({ page, prevPage, nextPage, lastPage }) => {
       >
         PREV
       </button>
-      <span
-        className='page-text'
-      >
-        PAGE {page}/{lastPage}
-      </span>
+      <span className='page-text'>PAGE {page}/{lastPage}</span>
       <button
         className='pagination-button' 
         disabled={page >= lastPage}
-        onClick={nextPage
-      }>
+        onClick={nextPage}
+      >
         NEXT
       </button>
     </div>

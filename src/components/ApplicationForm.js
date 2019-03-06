@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateApplicationOnServer } from '../store';
 
+import { updateApplicationOnServer } from '../store';
 import { Input, Button } from './Library';
 import Error from './Error';
 
@@ -114,18 +114,19 @@ class ApplicationForm extends Component {
         {
           tokenStatus ? (
             <div>
+
               <div className='form-title'>Please complete the form below.</div>
               <div className='form-title form-subtitle'>You have received the {applicantFoundByToken.application_type} Application.</div>
 
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
                   <Input placeholder='First Name' name='first_name' value={first_name} onChange={handleChange}/>
-                  { errors.first_name && <span className='form-error'>{errors.first_name}</span>}
+                  { errors.first_name && <span className='form-error'>{errors.first_name}</span> }
                   <div className='form-label'>Please enter your first name.</div>
                 </div>
                 <div className='form-flex-item'>
                   <Input placeholder='Last Name' name='last_name' value={last_name} onChange={handleChange}/>
-                  { errors.last_name && <span className='form-error'>{errors.last_name}</span>}
+                  { errors.last_name && <span className='form-error'>{errors.last_name}</span> }
                   <div className='form-label'>Please enter your last name.</div>
                 </div>
               </div>
@@ -133,12 +134,12 @@ class ApplicationForm extends Component {
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
                   <Input placeholder='Email Address' name='email' value={email} onChange={handleChange} type='email'/>
-                  { errors.email && <span className='form-error'>{errors.email}</span>}
+                  { errors.email && <span className='form-error'>{errors.email}</span> }
                   <div className='form-label'>Please enter your email address.</div>
                 </div>
                 <div className='form-flex-item'>
                   <Input placeholder='Phone Number' name='phone' value={phone} onChange={handleChange}/>
-                  { errors.phone && <span className='form-error'>{errors.phone}</span>}
+                  { errors.phone && <span className='form-error'>{errors.phone}</span> }
                   <div className='form-label'>Please enter your phone number.<br/>{numberMessage}</div>
                 </div>
               </div>
@@ -146,12 +147,12 @@ class ApplicationForm extends Component {
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
                   <Input placeholder='Landlord Name' name='landlord_name' value={landlord_name} onChange={handleChange}/>
-                  { errors.landlord_name && <span className='form-error'>{errors.landlord_name}</span>}
+                  { errors.landlord_name && <span className='form-error'>{errors.landlord_name}</span> }
                   <div className='form-label'>Please enter your landlords name.</div>
                 </div>
                 <div className='form-flex-item'>
                   <Input placeholder='Landlord Phone Number' name='landlord_phone' value={landlord_phone} onChange={handleChange}/>
-                  { errors.landlord_phone && <span className='form-error'>{errors.landlord_phone}</span>}
+                  { errors.landlord_phone && <span className='form-error'>{errors.landlord_phone}</span> }
                   <div className='form-label'>Please enter your landlords phone number.</div>
                 </div>
               </div>
@@ -159,7 +160,7 @@ class ApplicationForm extends Component {
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
                   <Input placeholder='Landlord Email' name='landlord_email' value={landlord_email} onChange={handleChange} type='email'/>
-                  { errors.landlord_email && <span className='form-error'>{errors.landlord_email}</span>}
+                  { errors.landlord_email && <span className='form-error'>{errors.landlord_email}</span> }
                   <div className='form-label'>Please enter your landlords email address.</div>
                 </div>
                 <div className='form-flex-item'/>
@@ -170,12 +171,12 @@ class ApplicationForm extends Component {
                   <div className='form-flex-container'>
                     <div className='form-flex-item'>
                       <Input placeholder="Mother's Maiden Name" name='maiden_name' value={maiden_name} onChange={handleChange}/>
-                      { errors.maiden_name && <span className='form-error'>{errors.maiden_name}</span>}
+                      { errors.maiden_name && <span className='form-error'>{errors.maiden_name}</span> }
                       <div className='form-label'>Please enter your mother's maiden name.</div>
                     </div>
                     <div className='form-flex-item'>
                       <Input placeholder='Social Security Number' name='ssn' value={ssn} onChange={handleChange}/>
-                      { errors.ssn && <span className='form-error'>{errors.ssn}</span>}
+                      { errors.ssn && <span className='form-error'>{errors.ssn}</span> }
                       <div className='form-label'>Please enter your Social Security Number.<br/>{numberMessage}</div>
                     </div>
                   </div>
@@ -185,7 +186,7 @@ class ApplicationForm extends Component {
 
               <div className='eviction-form'>
                 <div className='form-label'>Please tell us if and why you have ever been evicted.</div>
-                { errors.evictions && <span className='form-error'>{errors.evictions}</span>}
+                { errors.evictions && <span className='form-error'>{errors.evictions}</span> }
                 <Input placeholder='Type your answer here...' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
               </div>
               <div className='center-button'>
@@ -194,6 +195,7 @@ class ApplicationForm extends Component {
                   label='Submit Application'
                 />
               </div>
+              
             </div>
           ) : (
             <div>

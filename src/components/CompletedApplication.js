@@ -18,6 +18,7 @@ const CompletedApplication = ({ application }) => {
   const { id, application_type, first_name, last_name, email, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = application;
   return (
     <div>
+
       <div className='completed-app-title'>
         {first_name} {last_name}
       </div>
@@ -30,6 +31,7 @@ const CompletedApplication = ({ application }) => {
           label='Back to All Applications'
         />
       </div>
+
       <div className='data-container'>
 
         <div className='data-flex-container bg-gray'>
@@ -75,10 +77,12 @@ const CompletedApplication = ({ application }) => {
               </div>
             </div>
         }
+
         <div className='bg-gray'>
           <div className='data-flex-item item-key data-evictions'>Evictions:</div>
           <div className='data-flex-item item-value data-evictions'>{evictions}</div>
         </div>
+        
       </div>
     </div>
   );

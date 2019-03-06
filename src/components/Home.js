@@ -62,19 +62,23 @@ class Home extends Component {
     return (
       <div>
         <div className='new-application'>
+
           <div>
             <select onChange={changeType} className='dropdown-menu'>
               <option value=''>Select an Application Type</option>
               <option value='Basic'>Basic Application</option>
               <option value='Full'>Full Application</option>
             </select>
-            { error && <div className='error'>{error}</div>}
+            { error && <div className='error'>{error}</div> }
           </div>
+
           <Button
             onClick={onSubmit}
             label='Create Blank Application'
           />
+
         </div>
+
         <div className='app-count-banner'>
           There {plural1} currently
             <span className='app-count'>
@@ -82,7 +86,7 @@ class Home extends Component {
             </span>
           application{plural2}
         </div>
-        <div className='all-applications'>
+        
         {
           lastPage > 1 &&
             <Pagination
@@ -105,7 +109,6 @@ class Home extends Component {
               );
             })
         }
-        </div>
         {
           lastPage > 1 &&
             <Pagination

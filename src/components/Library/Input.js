@@ -22,6 +22,7 @@ const Input = ({ value, name, placeholder, onChange, type }) => {
             value={value}
             placeholder={placeholder}
             onChange={onChange}
+            type={type ? type : 'text'}
           />
         )
       }

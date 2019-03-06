@@ -8,6 +8,8 @@ Landlord Application Management - React App
 * node v10.2.0
 * npm 4.6.1
 
+Please be patient... since Heroku Applications go to sleep after about an hour of inactivity, it will take around 30 seconds or so to wake the app back up. Both the React Application and the Rails API need to be woken up, so please be sure to to refresh the page until there is data. I have left some applications preloaded, so if there are none -- be patient, they will appear (unless they have all been deleted by a third party visiting the site).
+
 To copy the application to your local machine, please run the 
  following command:
 

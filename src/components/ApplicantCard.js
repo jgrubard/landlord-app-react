@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { Button, LinkButton } from './Library';
-import '../stylesheets/ApplicantCard.css';
-
 import { application_url } from '../store/production_url';
+
+import '../stylesheets/ApplicantCard.css';
 
 const ApplicantCard = ({ application, deleteApplication, index }) => {
   const { id, token, application_type } = application;
