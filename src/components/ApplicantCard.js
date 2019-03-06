@@ -3,11 +3,12 @@ import React from 'react';
 import { Button, LinkButton } from './Library';
 import '../stylesheets/ApplicantCard.css';
 
+import { application_url } from '../store/production_url';
+
 const ApplicantCard = ({ application, deleteApplication, index }) => {
   const { id, token, application_type } = application;
   const color = index % 2 === 0 ? 'white' : 'blue'
-  const appUrl = `http://localhost:3001/#/applications/${token}`;
-  // const appUrl = `https://landlord-app-jg.herokuapp.com/#/applications/${token}`;
+  const appUrl = application_url + token;
   return (
     <div className={`app-card bg-${color}`}>
       <div className='card-title'>Application #{id}: {application_type} Application</div>

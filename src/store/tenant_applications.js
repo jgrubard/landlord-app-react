@@ -1,5 +1,6 @@
 import axios from 'axios';
-import url from './production_url';
+import { api_url } from './production_url';
+
 import { GET_APPLICATIONS, CREATE_APPLICATION, UPDATE_APPLICATION, DELETE_APPLICATION } from './action_constants';
 
 const getApplications = tenant_applications => ({ type: GET_APPLICATIONS, tenant_applications });
@@ -9,7 +10,7 @@ const deleteApplication = id => ({ type: DELETE_APPLICATION, id });
 
 export const getApplicationsFromServer = () => {
   return dispatch => {
-    return axios.get(url)
+    return axios.get(api_url)
       .then(res => res.data)
       .then(tenant_applications => dispatch(getApplications(tenant_applications)))
       .catch(err => console.log('ERR0R!!', { err }));
@@ -19,7 +20,7 @@ export const getApplicationsFromServer = () => {
 export const createApplicationOnServer = (application_type) => {
   return dispatch => {
     const token = Math.random().toString(32).slice(2);
-    return axios.post(url, { token, application_type })
+    return axios.post(api_url, { token, application_type })
       .then(res => res.data)
       .then(tenant_application => dispatch(createApplication(tenant_application)))
       .catch(err => console.log('ERR0R!!', { err }));
@@ -29,7 +30,7 @@ export const createApplicationOnServer = (application_type) => {
 export const updateApplicationOnServer = (tenant_application, history) => {
   return dispatch => {
     const { token } = tenant_application;
-    return axios.put(url + token, tenant_application)
+    return axios.put(api_url + token, tenant_application)
       .then(res => res.data)
       .then(tenant_application => dispatch(updateApplication(tenant_application)))
       .then(() => history.push('/applications/thank-you'))
@@ -39,7 +40,7 @@ export const updateApplicationOnServer = (tenant_application, history) => {
 
 export const deleteApplicationFromServer = id => {
   return dispatch => {
-    return axios.delete(url + id)
+    return axios.delete(api_url + id)
       .then(() => dispatch(deleteApplication(id)))
       .catch(err => console.log('ERR0R!!', { err }));
   }
