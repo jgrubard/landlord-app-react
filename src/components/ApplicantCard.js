@@ -32,7 +32,7 @@ const ApplicantCard = ({ application, deleteApplication, index }) => {
             <div className='button-flex-item'>
               <LinkButton
                 path={`/applications/completed/${id}`}
-                label='Click to see applicant Data'
+                label='Click to see Applicant Data'
               />
             </div>
         }
