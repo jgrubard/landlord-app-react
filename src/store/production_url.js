@@ -6,7 +6,7 @@ const api = '/v1/tenant_applications/';
 
 const local_app = 'http://localhost:3001';
 const deployed_app = 'https://landlord-app-jg.herokuapp.com';
-const ext = '/applications/';
+const ext = '/#/applications/';
 
 export const api_url = (deployed ? deployed_api_url : local_api_url) + api;
 
