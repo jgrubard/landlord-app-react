@@ -1,27 +1,38 @@
 .app-container {
-  margin: 75px 300px;
+  margin: 0px 300px;
 }
 
 @media (max-width: 1200px) {
   .app-container {
-    margin: 75px 200px;
+    margin-right: 200px;
+    margin-left: 200px;
   }
 }
 
 @media (max-width: 900px) {
   .app-container {
-    margin: 75px 125px;
+    margin-right: 125px;
+    margin-left: 125px;
   }
 }
 
 @media (max-width: 640px) {
   .app-container {
-    margin: 75px 75px;
+    margin-right: 75px;
+    margin-left: 75px;
+  }
+}
+
+@media (max-width: 590px) {
+  .app-container {
+    margin-right: 40px;
+    margin-left: 40px;
   }
 }
 
 @media (max-width: 500px) {
   .app-container {
-    margin: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
 }

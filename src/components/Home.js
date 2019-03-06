@@ -61,7 +61,6 @@ class Home extends Component {
     const [ plural1, plural2 ] = tenant_applications.length === 1 ? ['is', ''] : ['are', 's'];
     return (
       <div>
-        <div className='home-title'>Renter Application Manager</div>
         <div className='new-application'>
           <div>
             <select onChange={changeType} className='dropdown-menu'>

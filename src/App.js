@@ -8,6 +8,7 @@ import Home from './components/Home';
 import ApplicationForm from './components/ApplicationForm';
 import ThankYou from './components/ThankYou';
 import CompletedApplication from './components/CompletedApplication';
+import Banner from './components/Banner';
 
 import './App.css';
 
@@ -21,6 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Banner />
         <Router>
           <div className='app-container'>
             <Route exact path='/' component={Home} />

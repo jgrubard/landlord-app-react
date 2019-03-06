@@ -6,7 +6,7 @@
 
 [Ruby on Rails API](https://landlord-app-ruby-api.herokuapp.com/v1/tenant_applications)
 
-* Node v10.2.0
+* node v10.2.0
 * npm 4.6.1
 
 To copy the application to your local machine, please run the 

@@ -100,7 +100,6 @@ class ApplicationForm extends Component {
     this.setState({ errors })
     if(Object.keys(errors).length) return;
     updateApplication({ email, first_name, last_name, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn, token });
-    // this.setState({ email: '' });
   }
 
   render() {
@@ -115,21 +114,19 @@ class ApplicationForm extends Component {
         {
           tokenStatus ? (
             <div>
-              <h2>Please complete the form below.</h2>
-              <h3>You have received the <i>{applicantFoundByToken.application_type}</i> Application.</h3>
+              <div className='form-title'>Please complete the form below.</div>
+              <div className='form-title form-subtitle'>You have received the {applicantFoundByToken.application_type} Application.</div>
 
               <div className='form-flex-container'>
                 <div className='form-flex-item'>
                   <Input placeholder='First Name' name='first_name' value={first_name} onChange={handleChange}/>
                   { errors.first_name && <span className='form-error'>{errors.first_name}</span>}
                   <div className='form-label'>Please enter your first name.</div>
-                  
                 </div>
                 <div className='form-flex-item'>
                   <Input placeholder='Last Name' name='last_name' value={last_name} onChange={handleChange}/>
                   { errors.last_name && <span className='form-error'>{errors.last_name}</span>}
                   <div className='form-label'>Please enter your last name.</div>
-
                 </div>
               </div>
 
@@ -191,11 +188,12 @@ class ApplicationForm extends Component {
                 { errors.evictions && <span className='form-error'>{errors.evictions}</span>}
                 <Input placeholder='Type your answer here...' name='evictions' value={evictions} onChange={handleChange} type='textarea'/>
               </div>
-
-              <Button
-                onClick={(ev) => onSubmit(ev, applicantFoundByToken)}
-                label='Submit Application'
-              />
+              <div className='center-button'>
+                <Button
+                  onClick={(ev) => onSubmit(ev, applicantFoundByToken)}
+                  label='Submit Application'
+                />
+              </div>
             </div>
           ) : (
             <div>
