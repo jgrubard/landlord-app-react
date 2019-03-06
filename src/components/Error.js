@@ -6,10 +6,13 @@ const Error = () => {
   const contact = 'info@landlord-app.com';
   return (
     <div className='error-message'>
-      <div className='error-formatting large'>Whoops!</div>
-      <div className='error-formatting'>It seems like you shouldn't be here...</div>
-      <div className='error-formatting'>You have either already submitted your application or it has been removed from the system.</div>
-      <div className='error-formatting'>Please contact <b><a href={`mailto: ${contact}`}>{contact}</a></b> to get a new application link.</div>
+      <div className='error-formatting large'>HTTP 404: Not Found</div>
+      <div className='error-formatting'>Whoops! You shouldn't be here...</div>
+      <div className='error-formatting'>You seem to have an invalid token!</div>
+      <div className='error-formatting'>For a new link, please contact
+        <br/>
+        <b><a href={`mailto: ${contact}`}>{contact}</a></b>
+      </div>
     </div>
   );
 }

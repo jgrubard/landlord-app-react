@@ -9,6 +9,10 @@ const formatPhone = p => {
   return `(${p.slice(0,3)}) ${p.slice(3,6)}-${p.slice(6)}`;
 }
 
+const formatSSN = s => {
+  return `${s.slice(0,3)}-${s.slice(3,5)}-${s.slice(5)}`;
+}
+
 const CompletedApplication = ({ application }) => {
   if(!application) return null;
   const { id, application_type, first_name, last_name, email, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = application;
@@ -67,7 +71,7 @@ const CompletedApplication = ({ application }) => {
               </div>
               <div className='data-flex-container'>
                 <div className='data-flex-item item-key'>Social Security Number:</div>
-                <div className='data-flex-item item-value'>{ssn}</div>
+                <div className='data-flex-item item-value'>{formatSSN(ssn)}</div>
               </div>
             </div>
         }
