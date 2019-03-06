@@ -1,6 +1,16 @@
 .completed-app-title {
-  font-size: 25pt;
-  margin-bottom: 10px;
+  font-size: 30pt;
+  margin: 8px;
+  text-align: center;
+}
+
+.completed-app-subtitle {
+  font-size: 20pt;
+  margin-bottom: 15px;
+}
+
+.back-button {
+  text-align: center;
 }
 
 .data-container {

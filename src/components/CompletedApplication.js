@@ -14,11 +14,18 @@ const CompletedApplication = ({ application }) => {
   const { id, application_type, first_name, last_name, email, phone, landlord_name, landlord_phone, landlord_email, evictions, maiden_name, ssn } = application;
   return (
     <div>
-      <div className='completed-app-title'>{first_name} {last_name}'s Application - #{id} ({application_type})</div>
-      <LinkButton
-        path='/'
-        label='Back to All Applications'
-      />
+      <div className='completed-app-title'>
+        {first_name} {last_name}
+      </div>
+      <div className='completed-app-title completed-app-subtitle'>
+        Application #{id} ({application_type})
+      </div>
+      <div className='back-button'>
+        <LinkButton
+          path='/'
+          label='Back to All Applications'
+        />
+      </div>
       <div className='data-container'>
 
         <div className='data-flex-container bg-gray'>
