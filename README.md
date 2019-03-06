@@ -1,9 +1,13 @@
-Landlord Application Management App
+##Landlord Application Management
+##React App
 ----
 
-[Deployed Page](https://landlord-app-jg.herokuapp.com)
+[Deployed React App](https://landlord-app-jg.herokuapp.com)
 
 [Ruby on Rails API](https://landlord-app-ruby-api.herokuapp.com/v1/tenant_applications)
+
+* Node v10.2.0
+* npm 4.6.1
 
 To copy the application to your local machine, please run the 
  following command:
